@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الفواتير</title>
+<style>
+body {
+    font-family: sans-serif;
+    background: #fafafa;
+    padding: 20px;
+}
+.invoice {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+h2 {
+    margin: 0;
+}
+.item {
+    margin: 5px 0;
+}
+.total {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+</style>
+</head>
+
+<body>
+
+<h1>سجل الفواتير</h1>
+<div id="invoices"></div>
+
+<script>
+    let history = JSON.parse(localStorage.getItem("orders") || "[]");
+    let container = document.getElementById("invoices");
+
+    if (history.length === 0) {
+        container.innerHTML = "<p>لا يوجد طلبات محفوظة.</p>";
+    } else {
+        history.forEach(inv => {
+            let div = document.createElement("div");
+            div.className = "invoice";
+
+            div.innerHTML = `
+                <h2>طلب بتاريخ ${inv.date}</h2>
+                ${inv.items.map(i => `
+                    <div class="item">${i.name} — ${i.qty} × ${i.price} ريال</div>
+                `).join("")}
+                <div class="total">الإجمالي: ${inv.total} ريال</div>
+            `;
+
+            container.appendChild(div);
+        });
+    }
+</script>
+
+</body>
+</html>
