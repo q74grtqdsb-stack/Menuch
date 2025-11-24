@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>قائمة الطلبات</title>
+
+<style>
+    body {
+        font-family: sans-serif;
+        background: #f8f8f8;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+    }
+    .section {
+        margin-top: 25px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    }
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+    }
+    .item button {
+        padding: 6px 12px;
+        font-size: 18px;
+    }
+    #totalBox {
+        margin-top: 25px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 22px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    /* زر تم الطلب */
+    #doneBtn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin-top: 20px;
+        background: #ff6666;
+        border: none;
+        color: white;
+        font-size: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+</style>
+
+</head>
+
+<body>
+
+<h1>قائمة الطلبات</h1>
+
+<!-- قسم البرجر -->
+<div class="section">
+    <h2>برجر</h2>
+
+    <div class="item">
+        <span>ميبل - ٢٨ ريال</span>
+        <div>
+            <button onclick="decrease('maple')">−</button>
+            <span id="maple">0</span>
+            <button onclick="increase('maple', 28)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>كلاسيك - ٢٤ ريال</span>
+        <div>
+            <button onclick="decrease('classic')">−</button>
+            <span id="classic">0</span>
+            <button onclick="increase('classic', 24)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>كول سلو - ٢٥ ريال</span>
+        <div>
+            <button onclick="decrease('coleslaw')">−</button>
+            <span id="coleslaw">0</span>
+            <button onclick="increase('coleslaw', 25)">+</button>
+        </div>
+    </div>
+</div>
+
+<!-- أصناف جانبية -->
+<div class="section">
+    <h2>أصناف جانبية</h2>
+
+    <div class="item">
+        <span>ستريبس ٦ حبات - ٢٨ ريال</span>
+        <div>
+            <button onclick="decrease('strips6')">−</button>
+            <span id="strips6">0</span>
+            <button onclick="increase('strips6', 28)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>ستريبس ٣ حبات - ١٦ ريال</span>
+        <div>
+            <button onclick="decrease('strips3')">−</button>
+            <span id="strips3">0</span>
+            <button onclick="increase('strips3', 16)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>بايتس ٨ حبات - ١٦ ريال</span>
+        <div>
+            <button onclick="decrease('bites8')">−</button>
+            <span id="bites8">0</span>
+            <button onclick="increase('bites8', 16)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>بايتس ٤ حبات - ٨ ريال</span>
+        <div>
+            <button onclick="decrease('bites4')">−</button>
+            <span id="bites4">0</span>
+            <button onclick="increase('bites4', 8)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>لودد فرايز - ٢٢ ريال</span>
+        <div>
+            <button onclick="decrease('loaded')">−</button>
+            <span id="loaded">0</span>
+            <button onclick="increase('loaded', 22)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>فرايز - ٧ ريال</span>
+        <div>
+            <button onclick="decrease('fries')">−</button>
+            <span id="fries">0</span>
+            <button onclick="increase('fries', 7)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>بطاطس تسالي - ١١ ريال</span>
+        <div>
+            <button onclick="decrease('chips')">−</button>
+            <span id="chips">0</span>
+            <button onclick="increase('chips', 11)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>بطاطس تسالي بالدجاج - ١٦ ريال</span>
+        <div>
+            <button onclick="decrease('chipsChicken')">−</button>
+            <span id="chipsChicken">0</span>
+            <button onclick="increase('chipsChicken', 16)">+</button>
+        </div>
+    </div>
+</div>
+
+<!-- صوص -->
+<div class="section">
+    <h2>صوص</h2>
+
+    <div class="item">
+        <span>رانش صوص - ٣ ريال</span>
+        <div>
+            <button onclick="decrease('ranch')">−</button>
+            <span id="ranch">0</span>
+            <button onclick="increase('ranch', 3)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>تشكيند صوص - ٣ ريال</span>
+        <div>
+            <button onclick="decrease('chknd')">−</button>
+            <span id="chknd">0</span>
+            <button onclick="increase('chknd', 3)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>تشيز صوص - ٥ ريال</span>
+        <div>
+            <button onclick="decrease('cheese')">−</button>
+            <span id="cheese">0</span>
+            <button onclick="increase('cheese', 5)">+</button>
+        </div>
+    </div>
+</div>
+
+<!-- مشروبات -->
+<div class="section">
+    <h2>مشروبات</h2>
+
+    <div class="item">
+        <span>كولا - ٤ ريال</span>
+        <div>
+            <button onclick="decrease('cola')">−</button>
+            <span id="cola">0</span>
+            <button onclick="increase('cola', 4)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>سبرايت - ٤ ريال</span>
+        <div>
+            <button onclick="decrease('sprite')">−</button>
+            <span id="sprite">0</span>
+            <button onclick="increase('sprite', 4)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>ماء - ٢ ريال</span>
+        <div>
+            <button onclick="decrease('water')">−</button>
+            <span id="water">0</span>
+            <button onclick="increase('water', 2)">+</button>
+        </div>
+    </div>
+</div>
+
+<!-- المجموع -->
+<div id="totalBox">
+    المجموع: <span id="total">0 ريال</span>
+</div>
+
+<button id="doneBtn" onclick="resetAll()">تم الطلب</button>
+
+<script>
+let items = {
+    coleslaw: { price: 25, qty: 0 },
+    maple: { price: 28, qty: 0 },
+    classic: { price: 24, qty: 0 },
+
+    strips6: { price: 28, qty: 0 },
+    strips3: { price: 16, qty: 0 },
+    bites8: { price: 16, qty: 0 },
+    bites4: { price: 8, qty: 0 },
+    loaded: { price: 22, qty: 0 },
+    fries: { price: 7, qty: 0 },
+    chips: { price: 11, qty: 0 },
+    chipsChicken: { price: 16, qty: 0 },
+
+    ranch: { price: 3, qty: 0 },
+    chknd: { price: 3, qty: 0 },
+    cheese: { price: 5, qty: 0 },
+
+    cola: { price: 4, qty: 0 },
+    sprite: { price: 4, qty: 0 },
+    water: { price: 2, qty: 0 }
+};
+
+function increase(item, price) {
+    items[item].qty++;
+    document.getElementById(item).textContent = items[item].qty;
+    updateTotal();
+}
+
+function decrease(item) {
+    if (items[item].qty > 0) {
+        items[item].qty--;
+        document.getElementById(item).textContent = items[item].qty;
+        updateTotal();
+    }
+}
+
+function updateTotal() {
+    let total = 0;
+    for (let key in items) {
+        total += items[key].price * items[key].qty;
+    }
+    document.getElementById("total").textContent = total + " ريال";
+}
+
+// النسخة المعدّلة لحفظ الفاتورة
+function resetAll() {
+    let invoice = {
+        date: new Date().toLocaleString(),
+        items: [],
+        total: 0
+    };
+
+    for (let key in items) {
+        if (items[key].qty > 0) {
+            invoice.items.push({
+                name: document.querySelector(`[onclick*="${key}"]`)
+                       .parentElement.parentElement.querySelector("span").textContent,
+                qty: items[key].qty,
+                price: items[key].price
+            });
+            invoice.total += items[key].qty * items[key].price;
+        }
+    }
+
+    // حفظ الفاتورة
+    let history = JSON.parse(localStorage.getItem("orders") || "[]");
+    history.push(invoice);
+    localStorage.setItem("orders", JSON.stringify(history));
+
+    // تصفير
+    for (let key in items) {
+        items[key].qty = 0;
+        document.getElementById(key).textContent = 0;
+    }
+
+    updateTotal();
+}
+</script>
+
+</body>
+</html>
